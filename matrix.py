@@ -1,12 +1,13 @@
-'''
-1 2 3 4 5 6
-3 2
+# input->
+# 1 2 3 4 5 6
+# 3 2
+# output->
+# 3 3
+# 1 2 4
+# 3 4 5
+# 5 6 6
+#
 
-3 3
-1 2 4
-3 4 5
-5 6 6
-'''
 
 class array:
     def __init__(self, lst, r=0, c=0):
@@ -22,9 +23,10 @@ class array:
                     M.append(tmp)
                     tmp = []
             self.lst = M
+
     def __add__(self, other):
         if (self.r, self.c) == (other.r, other.c):
-            M = [[0]*self.c] * self.r # [[0, 0, 0], [0, 0, 0]]
+            M = [[0]*self.c] * self.r  # [[0, 0, 0], [0, 0, 0]]
             for i in range(self.r):
                 for j in range(other.c):
                     M[i][j] = self.lst[i][j] + other.lst[i][j]
@@ -34,25 +36,27 @@ class array:
     
     def __sub__(self, other):
         if (self.r, self.c) == (other.r, other.c):
-            M = [[0]*self.c] * self.r # [[0, 0, 0], [0, 0, 0]]
+            M = [[0]*self.c] * self.r  # [[0, 0, 0], [0, 0, 0]]
             for i in range(self.tr):
                 for j in range(other.c):
                     M[i][j] = self.lst[i][j] - other.lst[i][j]
                 return array(M)
         else:
             return "Not Compatible for Subtraction"
+
     def __mul__(self, other):
         if (self.r, self.c) == (other.r, other.c):
-            M = [[0]*self.c] * self.r # [[0, 0, 0], [0, 0, 0]]
+            M = [[0]*self.c] * self.r  # [[0, 0, 0], [0, 0, 0]]
             for i in range(self.tr):
                 for j in range(other.c):
                     M[i][j] = self.lst[i][j] * other.lst[i][j]
                 return array(M)
         else:
             return "Not Compatible for Multiplication"
+
     def dot(self, other):
         if self.c == other.r:
-            M = eval(str([[0]*self.r] * self.c)) # [[0, 0, 0], [0, 0, 0]]
+            M = eval(str([[0]*self.r] * self.c))  # [[0, 0, 0], [0, 0, 0]]
             for i in range(self.r):
                 for j in range(other.c):
                     for k in range(self.c):
@@ -67,9 +71,11 @@ class array:
             for j in range(self.r):
                 M[i][j] = self.lst[j][i]
         return array(M)
+
     def display(self):
         for i in self.lst:
             print(*i)
+
 
 # driver code
 lst1 = list(map(eval, input("Enter Matrix 1 Elements\n").split()))
