@@ -1,7 +1,7 @@
 # pandas : data visualisation tool
 import pandas as pd
-series = pd.Series(['Vivek', 'Rakshit', 'Kamal', 'Sumit'], [62, 40, 22, 48])
-# print(series)
+series = pd.Series([62, 40, 22, 48], index=list('abcd'))
+print(series[1:3])
 
 # syntax for DataFrame visualization
 # pandas.DataFrame(data, index, columns, dtype, copy)
